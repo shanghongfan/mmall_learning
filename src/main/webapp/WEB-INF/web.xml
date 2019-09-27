@@ -49,8 +49,6 @@
 
 
 
-
-
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>*.do</url-pattern>

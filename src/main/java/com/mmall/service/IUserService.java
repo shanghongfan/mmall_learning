@@ -25,9 +25,11 @@ public interface IUserService {
      //登录状态下重置密码
      ServerResponse<String> resetPassword(String oldPassword, String newPassword,User user);
    //更新用户个人信息
-    public ServerResponse<User> updateInformation(User user);
+     ServerResponse<User> updateInformation(User user);
     //获取用户详细信息
-    public ServerResponse<User> getInformation(Integer userId);
+     ServerResponse<User> getInformation(Integer userId);
+    //检验账号是否是管理员
+     ServerResponse checkAdminRole(User user);
 
 
 
