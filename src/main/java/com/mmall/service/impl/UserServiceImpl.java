@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
- * @Date: 2019-08-14 20:40
+ * @Date: 2017-08-14 20:40
  * @author: Mr.Shang
  * @description:
  **/
@@ -74,7 +74,7 @@ public class UserServiceImpl implements IUserService {
     /**
      * 校验用户名和密码
      */
-
+    @Override
     public ServerResponse<String> checkValid(String str, String type){
 
         //判断是否为空
@@ -131,7 +131,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ServerResponse<String> checkAuswer(String username, String question, String answer){
 
-        int checkAuswer = userMapper.checkAuswer(username, question, answer);
+        int checkAuswer =   userMapper.checkAnswer(username, question, answer);
         if (checkAuswer>0){
           //问题答案正确
             String forgetToken = UUID.randomUUID().toString();
@@ -252,9 +252,9 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ServerResponse checkAdminRole(User user) {
         if (user!=null&&user.getRole().intValue()==Const.Role.ROLE_ADMIN){
-            return ServerResponse.createBySuccess();
+            return ServerResponse.createBySuccess(user);
         }
-        return ServerResponse.createByError();
+        return ServerResponse.createByErrorMessage("密码重置失败");
     }
 
 

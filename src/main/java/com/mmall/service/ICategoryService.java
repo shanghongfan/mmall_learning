@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @description: 实现分类管理接口
  * @author: Mr.Shang
- * @Date: 2019-08-27 14:57
+ * @Date: 2017-08-27 14:57
  **/
 public interface ICategoryService {
     //添加品类

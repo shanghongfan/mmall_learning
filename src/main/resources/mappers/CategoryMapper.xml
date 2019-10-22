@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mmall.dao.CategoryMapper" >
+
   <resultMap id="BaseResultMap" type="com.mmall.pojo.Category" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -16,29 +17,20 @@
     id, parent_id, name, status, sort_order, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from mmall_category
     where id = #{id,jdbcType=INTEGER}
   </select>
-  
-  <select id="selectChildrenParallelCategoryByparentId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    select
-    <include refid="Base_Column_List"/>
-     from mmall_category
-    where parent_id = #{parentId}
-  </select>
-  
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_category
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mmall.pojo.Category" >
-    insert into mmall_category (id, parent_id, name, 
-      status, sort_order, create_time, 
+    insert into mmall_category (id, parent_id, name,
+      status, sort_order, create_time,
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
       #{status,jdbcType=BIT}, #{sortOrder,jdbcType=INTEGER}, now(),
       now())
   </insert>
@@ -126,5 +118,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-
+  <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_category
+    where parent_id = #{parentId}
+  </select>
 </mapper>

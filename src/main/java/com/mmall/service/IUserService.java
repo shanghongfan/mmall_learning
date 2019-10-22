@@ -6,7 +6,7 @@ import com.mmall.pojo.User;
 /**
  * @description: 登录接口
  * @author: Mr.Shang
- * @Date: 2019-08-14 20:39
+ * @Date: 2017-08-14 20:39
  **/
 public interface IUserService {
   //用户登录
